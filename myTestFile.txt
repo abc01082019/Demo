@@ -1,15 +1,1 @@
-daldkaslkdl
-asdsa
-aa
-s
-
-as
-sassd
-
-
-adasd
-
-as
-a
-a
-sasa
+clean up myTestFile
