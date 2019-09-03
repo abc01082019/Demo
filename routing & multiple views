@@ -1,3 +1,4 @@
+////////////// app.config //////////////
 angular.
   module('phonecatApp').
   config(['$routeProvider',
@@ -15,3 +16,19 @@ angular.
         otherwise('/page-no-found');
     }
   ]);
+  
+  /////////// phone.detail.component.js /////////
+  // Register `phoneDetail` component, along with its associated controller and template
+angular.
+  module('phoneDetail').
+  component('phoneDetail', {
+    template: 'TBD: Detail view for <span>{{$ctrl.phoneId}}</span>',
+    controller: ['$routeParams',
+      // '$routerParams' object is passed from 'app.config'
+      function PhoneDetailController($routeParams) {
+        console.log("route params: ");
+        console.log($routeParams);
+        this.phoneId = $routeParams.phoneId;
+      }
+    ]
+  });
