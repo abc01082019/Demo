@@ -34,7 +34,7 @@ angular.
   
   
   
-// phone-list: use 'Phone.query()' to get all the phones-info 
+// phone-list: use 'Phone.query()' (which is defined inside the Phone service) to get all the phones-info 
 angular.
   module('phoneList').
   component('phoneList', {
