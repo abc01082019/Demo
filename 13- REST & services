@@ -1,0 +1,48 @@
+// have a Phone service that take a phoneId as parameter
+// usage: Phone.get("phoneId")
+angular.
+  module('core.phone').
+  factory('Phone', ['$resource',
+    function($resource) {
+      return $resource('phones/:phoneId.json', {}, {
+        query: {
+          method: 'GET',
+          params: {phoneId: 'phones'},
+          isArray: true
+        }
+      });
+    }
+  ]);
+ 
+// Phone detail: pass a 'phoneId' to 'Phone'-service
+angular.
+  module('phoneDetail').
+  component('phoneDetail', {
+    templateUrl: 'phone-detail/phone-detail.template.html',
+    controller: ['$routeParams', 'Phone',
+      function PhoneDetailController($routeParams, Phone) {
+        var self = this;
+        self.phone = Phone.get({phoneId: $routeParams.phoneId}, function(phone) {
+          self.setImage(phone.images[0]);
+        });
+        self.setImage = function setImage(imageUrl) {
+          self.mainImageUrl = imageUrl;
+        };
+      }
+    ]
+  });
+  
+  
+  
+// phone-list: use 'Phone.query()' to get all the phones-info 
+angular.
+  module('phoneList').
+  component('phoneList', {
+    templateUrl: 'phone-list/phone-list.template.html',
+    controller: ['Phone',
+      function PhoneListController(Phone) {
+        this.phones = Phone.query();
+        this.orderProp = 'age';
+      }
+    ]
+  });  
