@@ -1,1 +1,25 @@
 Allows to replace the large image with any of the thumbnails in the phone-detail-template.html (use the first image as initial)
+/// phone-detail.component.js ///
+controller: ['$http', '$routeParams',
+  function PhoneDetailController($http, $routeParams) {
+    var self = this;
+
+    self.setImage = function setImage(imageUrl) {
+      self.mainImageUrl = imageUrl;
+    };
+
+    $http.get('phones/' + $routeParams.phoneId + '.json').then(function(response) {
+      self.phone = response.data;
+      self.setImage(self.phone.images[0]);
+    });
+  }
+]
+
+/// phone-detail.template.html ///
+<img ng-src="{{$ctrl.mainImageUrl}}" class="phone" />
+...
+<ul class="phone-thumbs">
+  <li ng-repeat="img in $ctrl.phone.images">
+    <img ng-src="{{img}}" ng-click="$ctrl.setImage(img)" />
+  </li>
+</ul>
