@@ -20,6 +20,7 @@ controller: ['$http', '$routeParams',
 ...
 <ul class="phone-thumbs">
   <li ng-repeat="img in $ctrl.phone.images">
+    // when a user click on one of the thumnail images, the handler will use -setImage method callback to change the mainImageUrl value
     <img ng-src="{{img}}" ng-click="$ctrl.setImage(img)" />
   </li>
 </ul>
