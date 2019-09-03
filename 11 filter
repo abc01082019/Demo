@@ -9,3 +9,17 @@ angular.
   });
   
 // replaced true and fasle by ✓ and ✘
+
+
+// test: use build-in AngularJS filters
+<br />
+{{'lower case string' | uppercase}}
+<br />
+{{ {foo: 'bar', bar: 42} | json }}
+<br />
+{{1459461289000 | date}}
+<br />
+{{1459461289000 | date}}
+<br/>
+<input ng-model="userInput" /> Uppercased: {{userInput | uppercase}}
+{{userInput | json}}
