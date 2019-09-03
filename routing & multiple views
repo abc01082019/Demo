@@ -8,7 +8,8 @@ angular.
           template: '<phone-list></phone-list>'
         }).
         when('/phones/:phoneId', {
-          template: '<phone-detail></phone-detail>'
+          // The phoneId model is visible onlyin the context set by the 'phoneDetail' component. (isolation)
+          template: '{{$ctrl.phoneId}} <phone-detail></phone-detail>'
         }).
         when('/page-no-found', {
           template: '<p>404 - Page Not Found</p>'
